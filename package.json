@@ -7,5 +7,9 @@
   },
   "engines": {
     "node": "0.12.1"
+  },
+  "repository" : { 
+    "type" : "git"
+    , "url" : "https://github.com/sean-hill/raspberry-pi-web-server.git"
   }
 }

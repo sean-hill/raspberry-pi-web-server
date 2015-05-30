@@ -1,0 +1,20 @@
+{
+    "apps" : [{
+        "name"        : "Web Server",
+        "script"      : "server.js",
+        "node_args"   : "--max-old-space-size=8192 --nouse-idle-notification",
+        "env": {
+            "NODE_ENV": "production"
+        }
+    }],
+	"deploy" : {
+		"production" : {
+			"user" : "pi",
+			"host" : "sean-hill.ddns.net:8080",
+			"ref"  : "origin/master",
+			"repo" : "https://github.com/sean-hill/raspberry-pi-web-server.git",
+			"path" : "/var/www/web-server",
+			"post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env production"
+		}
+	}
+}

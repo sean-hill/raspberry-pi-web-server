@@ -10,7 +10,8 @@
 	"deploy" : {
 		"production" : {
 			"user" : "pi",
-			"host" : "sean-hill.ddns.net:8080",
+			"host" : "sean-hill.ddns.net",
+			"port" : "8080",
 			"ref"  : "origin/master",
 			"repo" : "https://github.com/sean-hill/raspberry-pi-web-server.git",
 			"path" : "/var/www/web-server",

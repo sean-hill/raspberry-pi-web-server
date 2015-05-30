@@ -84,7 +84,7 @@ Well, you've done it, you can successfully view a webpage hosted on your raspber
 
 ### PM2
 
-I ❤️ pm2. It's a great module to deploy your nodejs applications. First let's install it on both your computer and your raspberry pi.
+I ❤️ [pm2](https://github.com/Unitech/pm2). It's a great module to deploy your nodejs applications. First let's install it on both your computer and your raspberry pi.
 
 	$ sudo npm install -g pm2
 	
@@ -94,7 +94,37 @@ I like to store my web server in the `/var/www`. So let's first create that dire
 	$ sudo chown pi /var/www
 	$ sudo chgrp pi /var/www
 	
+Now we'll use pm2 to deploy straight from our local machine to our raspberry pi, but first we need to be able to ssh into our raspberry pi. 
 
+	$ sudo raspi-config
+	$ 8 Advanced Options
+	$ A4 SSH
+	$ Enable
+	
+Then you'll need to setup another single port forwarding on your router to allow SSH into your home. For my linksys router I had to find out what port allowed remote access on my router by going to `Administration` and seeing the port under `Remote Management Port`. It was `8080` for me. Then I setup the following single port forwarding.
+
+![SSH port forwarding](https://www.dropbox.com/s/5yjmevrbm8glzq8/ssh-port-forwarding.png?dl=1)
+
+	External Port: 8080
+	Internal Port: 22
+	Protocol: Both
+	To IP Address: <your pi IP>
+	Enabled: Checked
+	
+Test that your SSH works by executing this command.
+
+	$ ssh -p 8080 pi@<your domain>.ddns.net
+	
+Now on your local computer clone this repo.
+
+	$ git clone https://github.com/sean-hill/raspberry-pi-web-server.git
+	
+Then edit the `ecosystem.json` file and replace the `host` with your dynamic IP you received from `noip`. Once you've done that execute the following commands on your computer.
+
+	$ pm2 deploy ecosystem.json production setup
+	$ pm2 deploy ecosystem.json production
+	
+Hopefully all goes well :)
 
 
 

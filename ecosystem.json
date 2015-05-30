@@ -1,8 +1,12 @@
+// I could not yet get pm2's automated deployment to work on my Raspberry Pi.
+// However, this ecosystem.json does work to deploy with pm2. On the Rasberry Pi
+// side, things weren't working out.
+
 {
     "apps" : [{
         "name"        : "Web Server",
         "script"      : "server.js",
-        "node_args"   : "--max-old-space-size=8192 --nouse-idle-notification",
+        //"node_args"   : "--max-old-space-size=8192 --nouse-idle-notification",
         "env": {
             "NODE_ENV": "production"
         }
@@ -10,7 +14,7 @@
 	"deploy" : {
 		"production" : {
 			"user" : "pi",
-			"host" : "sean-hill.ddns.net",
+			"host" : "<your-domain>.ddns.net",
 			"port" : "8080",
 			"ref"  : "origin/master",
 			"repo" : "https://github.com/sean-hill/raspberry-pi-web-server.git",

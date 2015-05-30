@@ -1,5 +1,5 @@
 # Raspberry Pi Express Web Server
-This is how I built a home web server with a Raspberry Pi and Express Server.
+This is how I built a home web server with a Raspberry Pi, Node JS, and an Express Server.
 
 ## Purchases
 

@@ -3,8 +3,7 @@
   "description": "Simple raspberry pi web server.",
   "version": "0.0.1",
   "dependencies": {
-    "express": "^4.12.4",
-    "morgan": "^1.5.3"
+    "express": "^4.12.4"
   },
   "engines": {
     "node": "0.12.1"

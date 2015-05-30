@@ -8,7 +8,7 @@ This is how I built a home web server with a Raspberry Pi and Express Server.
 3. [Micro SD Card](http://amzn.com/B00DYQYLQQ) (At least 8 GB)
 4. [Case](http://amzn.com/B00MQLB1N6) (Optional)
 
-![Rasberry Pi](https://www.dropbox.com/s/euujwu3nowunjtk/raspberry-pi.jpg?dl=0)
+![Rasberry Pi](https://www.dropbox.com/s/euujwu3nowunjtk/raspberry-pi.jpg?dl=1 =450x)
 
 ## Hardware
 
@@ -34,13 +34,17 @@ This is how I built a home web server with a Raspberry Pi and Express Server.
 	$ sudo dpkg -i node_latest_armhf.deb
 	$ node -v
 
-## Install Git and clone this repo
+## Install Git and fork this repo
 
 	$ sudo apt-get install git
-	$ git clone https://github.com/sean-hill/raspberry-pi-web-server.git
+	
+Fork [this](https://github.com/sean-hill/raspberry-pi-web-server.git) repo so that you can commit your own updates later on, then clone your repo to your Pi.
 
+	$ cd ~/
+	$ git clone <your-forked-url>
+	
 ## Run the Webserver
-	$ cd raspberry-pi-web-server
+	$ cd ~/raspberry-pi-web-server
 	$ npm install
 	$ node server.js
 	
@@ -50,8 +54,9 @@ You did it! You successfully ran a webserver on your Raspberry Pi. Now what? How
 
 ## Dynamic DNS
 
-In order for your buddies to access your home web server, you'll need your own domain name that points to your router's dynamic IP provided by your local ISP. I went with free version of [noip.com](http://www.noip.com/). After creating an account follow these steps.
+In order for your buddies to access your home web server, you'll need your own domain name that points to your router's dynamic IP provided by your local ISP. I went with the free version of [noip.com](http://www.noip.com/). After creating an account with noip, follow these steps.
 
+	$ cd ~/
 	$ wget http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz
 	$ tar vzxf noip-duc-linux.tar.gz
 	$ cd noip-2.1.9-1
@@ -119,17 +124,27 @@ Now on your local computer clone this repo.
 
 	$ git clone https://github.com/sean-hill/raspberry-pi-web-server.git
 	
-Then edit the `ecosystem.json` file and replace the `host` with your dynamic IP you received from `noip`. Once you've done that execute the following commands on your computer.
+Then edit the `ecosystem.json` file and replace the variables between `< >` with your appropriate fields. Once you've done that, execute the following commands on your computer to setup your project on your raspberry pi.
 
 	$ pm2 deploy ecosystem.json production setup
 	$ pm2 deploy ecosystem.json production
 	
-You'll be prompted to enter your `pi` password multiple times. If this bothers you, I recommend creating public / private ssh keys for your `pi` user and you local computer as described [here](https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md).
+You'll be prompted to enter your `pi` password multiple times. If this bothers you, I recommend creating public/private ssh keys on your computer and to copy your public key to your raspberry pi as described [here](https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md).
 
 Now head back over to your raspberry pi, and exectute these commands.
 
-	$ cd /var/www/web-server
+	$ cd /var/www
 	$ pm2 list
+	
+You should see your app running and be able to access your server from your browser at `<your-domain>.ddns.net:5000`!
+
+	│ Web Server │ 0 │ fork │ 10488 │ online │ 7 │ 6m │ 22.156 MB │ disabled │
+	
+Now every time you make changes to your server, commit the changes, push them up, and then deploy your app using pm2. You never have to SSH into your Raspberry Pi.
+
+## Conclusion
+
+This is a bit of tedious process, but you just set up your own personal web server for less then 50 bucks. Pretty sweet! Good luck and let me know if this process could be improved!
 
 
 

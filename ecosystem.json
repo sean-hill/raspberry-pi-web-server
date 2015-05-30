@@ -9,10 +9,10 @@
 	"deploy" : {
 		"production" : {
 			"user" : "pi",
-			"host" : "sean-hill.ddns.net",
-			"port" : "8080",
+			"host" : "<your-domain>.ddns.net",
+			"port" : "<your-router-port>",
 			"ref"  : "origin/master",
-			"repo" : "https://github.com/sean-hill/raspberry-pi-web-server.git",
+			"repo" : "<your-github-repo>",
 			"path" : "/var/www/web-server",
 			"post-deploy" : "npm install && pm2 startOrRestart ecosystem.json --env production"
 		}

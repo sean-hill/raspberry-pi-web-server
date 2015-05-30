@@ -124,7 +124,12 @@ Then edit the `ecosystem.json` file and replace the `host` with your dynamic IP 
 	$ pm2 deploy ecosystem.json production setup
 	$ pm2 deploy ecosystem.json production
 	
-Hopefully all goes well :)
+You'll be prompted to enter your `pi` password multiple times. If this bothers you, I recommend creating public / private ssh keys for your `pi` user and you local computer as described [here](https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md).
+
+Now head back over to your raspberry pi, and exectute these commands.
+
+	$ cd /var/www/web-server
+	$ pm2 list
 
 
 

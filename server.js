@@ -1,3 +1,5 @@
+console.log('HELLO SERVER');
+
 var express = require('express');
 var app = express();
 

@@ -8,7 +8,7 @@ This is how I built a home web server with a Raspberry Pi and Express Server.
 3. [Micro SD Card](http://amzn.com/B00DYQYLQQ) (At least 8 GB)
 4. [Case](http://amzn.com/B00MQLB1N6) (Optional)
 
-![Rasberry Pi](https://www.dropbox.com/s/euujwu3nowunjtk/raspberry-pi.jpg?dl=1 =450x)
+![Rasberry Pi](https://www.dropbox.com/s/euujwu3nowunjtk/raspberry-pi.jpg?dl=1)
 
 ## Hardware
 
@@ -48,7 +48,7 @@ Fork [this](https://github.com/sean-hill/raspberry-pi-web-server.git) repo so th
 	$ npm install
 	$ node server.js
 	
-Open a browser and go to <your-pi's-IP>:5000
+Open a browser and go to `<your-pi's-IP>:5000`
 
 You did it! You successfully ran a webserver on your Raspberry Pi. Now what? How about we open up your router to the outside world and setup a deployment method.
 

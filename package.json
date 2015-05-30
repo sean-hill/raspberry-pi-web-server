@@ -3,13 +3,14 @@
   "description": "Simple raspberry pi web server.",
   "version": "0.0.1",
   "dependencies": {
-    "express": "^4.12.4"
+    "express": "^4.12.4",
+    "morgan": "^1.5.3"
   },
   "engines": {
     "node": "0.12.1"
   },
-  "repository" : { 
-    "type" : "git"
-    , "url" : "https://github.com/sean-hill/raspberry-pi-web-server.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sean-hill/raspberry-pi-web-server.git"
   }
 }
